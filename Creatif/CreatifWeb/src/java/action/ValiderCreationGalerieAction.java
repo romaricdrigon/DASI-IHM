@@ -18,7 +18,7 @@ public class ValiderCreationGalerieAction extends Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        return "";
     }
 
 }

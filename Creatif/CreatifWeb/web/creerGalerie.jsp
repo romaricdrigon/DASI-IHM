@@ -22,7 +22,7 @@
 
         <% 
         if ( session == null || session.getAttribute("connecte") == null) {
-            return;
+            return; // la personne n'est pas connectée, on quitte
            }
         %>
         <h1>Création de galerie</h1>
@@ -46,24 +46,83 @@
                 <input type="submit" value="Rechercher" />
             </form>
          </div>
+                
+        <div>
+            Nom de l'oeuvre :
+            <form action="Controleur" method="get">
+                <input type="text" value="" name="nomOeuvre" />
+                <!--<select name="comparaison">
+                    <option value="-1"></option>
+                    <option value="inf"><</option>
+                    <option value="eg">=</option>
+                    <option value="sup">></option>
+                </select>
+                <input type="text" value="" name="prixOeuvre" />-->
+                <input type="hidden" value="rechercherOeuvre" name="action" />
+                <input type="submit" value="Rechercher" />
+            </form>
+         </div>
+                
+         <div>
+             <!-- on a pas de photo pour notre artiste ! -->
+             <%
+                if (request.getAttribute("lArtiste") != null) {
+                    Artiste unArtiste = (Artiste) request.getAttribute("lArtiste");
+             %>
+             <div>
+                 <%= unArtiste.getNom() %>
+                 <%= unArtiste.getPrenom() %>
+             </div>
+             <div>
+                 <%= unArtiste.getBiographie() %>
+             </div>
+             <%
+                }
+             %>
+         </div>
+         
+         <div>
+             Panier
+             
+             <form action="Controleur" method="get">
+                 <select name="oeuvresASupprimer" multiple>
+                 <%
+                    List<Oeuvre> lePanier = (List<Oeuvre>) request.getSession().getAttribute("panier");
+
+                    for (Oeuvre uneOeuvre : lePanier) {
+                 %>
+                        <option value="<%= uneOeuvre.getOeuvreId() %>"><%= uneOeuvre.getNom() %></option>
+                 <%
+                    }
+                 %>
+                 </select>
+             </form>
+             <input type="hidden" value="supprimerPanier" name="action" />
+             <input type="submit" value="Supprimer" />
+         </div>
 
          <div>
              Liste des oeuvres :
 
-             <ul>
-             <%
-                 if (request.getAttribute("lesOeuvres") != null) {
-                    List<Oeuvre> lesOeuvres = (List<Oeuvre>) request.getAttribute("lesOeuvres");
+             <form action="Controleur" method="get">
+                 <select name="oeuvresAAjouter" multiple>
+                 <%
+                     if (request.getAttribute("lesOeuvres") != null) {
+                        List<Oeuvre> lesOeuvres = (List<Oeuvre>) request.getAttribute("lesOeuvres");
 
-                    for (Oeuvre uneOeuvre : lesOeuvres) {
-             %>
-                <li><%= uneOeuvre.getNom() %></li>
-             <%
+                        for (Oeuvre uneOeuvre : lesOeuvres) {
+                 %>
+                    <option value="<%= uneOeuvre.getOeuvreId() %>"><%= uneOeuvre.getNom() %></option>
+                 <%
+                        }
                     }
-                }
-             %>
-             </ul>
-             
+                 %>
+                 </select>
+             </form>
+             <input type="hidden" value="ajouterPanier" name="action" />
+             <input type="submit" value="Ajouter" />
          </div>
+                 
+         <p>${erreurPanier}</p>
     </body>
 </html>

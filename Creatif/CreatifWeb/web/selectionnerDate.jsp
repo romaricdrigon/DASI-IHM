@@ -19,7 +19,7 @@
         <form action="Controleur">
             <input type="text" name="dateDebut" value="" />
             <input type="text" name="dateFin" value="" />
-            <input type="submit" name="action" value="creer" />
+            <input type="submit" name="action" value="dateSaisie" />
         </form>
 
         <p>${erreurDate}</p>

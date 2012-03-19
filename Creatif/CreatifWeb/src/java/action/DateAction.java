@@ -7,6 +7,7 @@ package action;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -46,6 +47,10 @@ public class DateAction extends Action {
                 // et on prépare une liste de toutes les oeuvres (disponibles sur ces dates)
                 List<Oeuvre> lesOeuvres = service.rechercherOeuvreParDate((Date)req.getSession().getAttribute("dateDebutCorrecte"), (Date)req.getSession().getAttribute("dateFinCorrecte"));
                 req.setAttribute("lesOeuvres", lesOeuvres);
+                
+                // on préparer un panier vide pour cette session
+                List<String> panier = new ArrayList(10);
+                req.getSession().setAttribute("panier", panier);
 
                 return "creerGalerie.jsp";
             } else {

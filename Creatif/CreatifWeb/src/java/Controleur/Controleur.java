@@ -1,9 +1,11 @@
 package Controleur;
 
 import action.Action;
+import action.AjouterPanierAction;
 import action.ChoixAction;
 import action.DateAction;
 import action.LoginAction;
+import action.RechercherOeuvreAction;
 import action.UnArtisteAction;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -56,11 +58,16 @@ public class Controleur extends HttpServlet {
             action = new LoginAction();
         } else if ("choix".equals(name)) {
             action = new ChoixAction();
-        } else if ("creer".equals(name)) {
+        } else if ("dateSaisie".equals(name)) {
             action = new DateAction();
-        } else if ("preparerArtiste".equals(name))
-        {
+        } else if ("preparerArtiste".equals(name)) {
             action = new UnArtisteAction();
+        } else if ("rechercherOeuvre".equals(name)) {
+            action = new RechercherOeuvreAction();
+        } else if ("ajouterPanier".equals(name)) {
+            action = new AjouterPanierAction();
+        } else if ("supprimerPanier".equals(name)) {
+            action = new SupprimerPanierAction();
         }
 
         return action;
