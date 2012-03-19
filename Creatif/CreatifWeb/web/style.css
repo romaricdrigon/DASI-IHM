@@ -16,6 +16,9 @@ body {
 h1, h2, h3, h4, h5 {
     font-family: Verdana, Geneva, sans-serif;
 }
+h1, h2 {
+    text-align: center;
+}
 
 ul {
     list-style-type: none;
@@ -34,15 +37,22 @@ ul {
     float: left;
     width: 50%;
 }
+.block {
+    width: 80%;
+    padding: 10%;
+}
 .footer {
-    clear: both;
-    width: 100%;
+    width: 900px;
     text-align: center;
 }
 
 /*
     Éléments transversaux à plusieurs pages
 */
+.center {
+    width: 200px;
+    margin: 0 auto;
+}
 .accueil {
     float: left;
     padding: 10px 5px;
@@ -52,22 +62,26 @@ ul {
     font-weight: bold;
     text-decoration: none;
 }
+.accueil a {
+    color: #fff;
+    text-decoration: none;
+}
 .button, input[type=submit] {
     display: block;
     margin: 10px;
-    padding: 10px 5px;
+    padding: 5px 10px;
     background: #191970;
-    color: #fff;
+    color: #fff !important;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none !important;
+    max-width: 200px;
 }
 .message {
     width: 70%;
     margin: 20px auto;
-    padding: 10px 0;
+    padding: 0;
     text-align: center;
     background: rgba(255,255,0,0.5);
-    border: 1px solid #DAA520;
     font-weight: bold;
     color: #DAA520;
 }

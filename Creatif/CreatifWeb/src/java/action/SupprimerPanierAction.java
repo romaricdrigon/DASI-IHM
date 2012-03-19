@@ -16,6 +16,11 @@ public class SupprimerPanierAction extends Action {
     
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         // on récupère les ids des oeuvres à supprimer du panier
         // c'est un select multiple, il peut en avoir une ou plusieurs
         String[] idsDesOeuvres = req.getParameterValues("oeuvresASupprimer");

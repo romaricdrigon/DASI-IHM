@@ -16,6 +16,7 @@ public abstract class Action {
     public void setService(Service service) {
         this.service = service;
     }
+    
     public abstract String execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException;
 }

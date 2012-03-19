@@ -16,6 +16,11 @@ public class RecapAction extends Action {
     
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         // on garde la variable de session "panier", qui devient un récap de commande
         List<Oeuvre> panier = (List) req.getSession().getAttribute("panier");
         

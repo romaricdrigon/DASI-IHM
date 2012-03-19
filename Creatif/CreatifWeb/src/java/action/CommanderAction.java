@@ -18,6 +18,11 @@ public class CommanderAction extends Action {
     
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         // enregistrer la commande = créer la galerie
         
         // on créé déjà le bon objet

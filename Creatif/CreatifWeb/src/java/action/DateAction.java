@@ -26,6 +26,11 @@ public class DateAction extends Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         String bufferDateDebut = req.getParameter("dateDebut");
         String bufferDateFin = req.getParameter("dateFin");
 

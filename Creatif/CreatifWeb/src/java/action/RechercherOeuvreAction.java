@@ -15,6 +15,11 @@ public class RechercherOeuvreAction extends Action {
     
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         // on récupère les paramètres
         String nomOeuvre = req.getParameter("nomOeuvre");
         

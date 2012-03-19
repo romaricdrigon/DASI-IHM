@@ -14,12 +14,12 @@
     </head>
     <body>
         <div class="content">
-            <div class="accueil">Accueil</div>
+            <div class="accueil"><a href="accueil.jsp">Accueil</a></div>
             
             <h1>Détail du catalogue</h1>
 
             <h3>Peintures</h3>
-            <table border="0">
+            <table border="0" width="900">
                 <thead>
                     <tr>
                         <th>Oeuvre</th>
@@ -36,7 +36,7 @@
                  %>
                     <tr>
                         <td><%= unePeinture.getNom() %></td>
-                        <td><%= unePeinture.getArtiste().getPrenom() + unePeinture.getArtiste().getNom() %></td>
+                        <td><%= unePeinture.getArtiste().getPrenom() + " " + unePeinture.getArtiste().getNom() %></td>
                         <td><%= unePeinture.getCarac() %></td>
                         <td><%= unePeinture.getPrix() %> €</td>
                     </tr>
@@ -47,7 +47,7 @@
             </table>
 
             <h3>Sculptures</h3>
-            <table border="0">
+            <table border="0" width="900">
                 <thead>
                     <tr>
                         <th>Oeuvre</th>
@@ -64,7 +64,7 @@
                  %>
                    <tr>
                         <td><%= uneSculpture.getNom() %></td>
-                        <td><%= uneSculpture.getArtiste().getPrenom() + uneSculpture.getArtiste().getNom() %></td>
+                        <td><%= uneSculpture.getArtiste().getPrenom() + " " + uneSculpture.getArtiste().getNom() %></td>
                         <td><%= uneSculpture.getCarac() %></td>
                         <td><%= uneSculpture.getPrix() %> €</td>
                    </tr>             

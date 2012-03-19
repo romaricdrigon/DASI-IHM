@@ -57,6 +57,12 @@ public class Controleur extends HttpServlet {
 
     private Action getAction(String name) {
         Action action = null;
+        
+        /*
+        if (session == null || session.getAttribute("connecte") == null) {
+                    return; // la personne n'est pas connectée, on quitte
+                }
+        */
 
         if ("login".equals(name)) {
             action = new LoginAction();

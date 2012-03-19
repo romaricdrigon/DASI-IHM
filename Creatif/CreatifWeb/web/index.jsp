@@ -16,7 +16,7 @@
             <form action="Controleur" method="get">
                 <input type="text" name="codeClient" value="" size="10" />
                 <input type="hidden" value="login" name="action" />
-                <input type="submit" value="Ok" name="buttonOk" />
+                <input type="submit" value="Se connecter" />
             </form>
 
             <div class="message">${erreur}</div>

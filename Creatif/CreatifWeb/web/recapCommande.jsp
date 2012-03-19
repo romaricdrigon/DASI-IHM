@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="content">
-            <div class="accueil">Accueil</div>
+            <div class="accueil"><a href="accueil.jsp">Accueil</a></div>
         
             <h1>Récapitulatif</h1>
 
@@ -33,8 +33,7 @@
             </div>
 
             <div class="footer">
-                <a href="Controleur?action=dateSaisie" class="button">Annuler la commande</a>
-                <a href="Controleur?action=validerCommande" class="button">Confirmer la commande</a>
+                <a href="Controleur?action=dateSaisie" class="button">Annuler la commande</a>   <a href="Controleur?action=validerCommande" class="button">Confirmer la commande</a>
             </div>
          </div>           
     </body>

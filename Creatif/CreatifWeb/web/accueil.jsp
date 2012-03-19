@@ -15,8 +15,10 @@
             
             <h2>Bonjour, <%= ((Client)session.getAttribute("leClient")).getPrenom() %> !</h2>
 
-            <a href="Controleur?action=creerGalerie" class="button">Créer une galerie</a>
-            <a href="Controleur?action=afficher" class="button">Afficher le catalogue</a>
+            <div class="center"">
+                <a href="Controleur?action=creerGalerie" class="button">Créer une galerie</a>
+                <a href="Controleur?action=afficher" class="button">Afficher le catalogue</a>
+            </div>
 
             <div class="message">${message}</div>
         </div>

@@ -23,6 +23,11 @@ public class UnArtisteAction extends Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
+        }
+        
         // récupération du code de l'artiste
         int idArtiste = Integer.parseInt(req.getParameter("artiste"));
         List<Artiste> tousArtistes = service.rechercherTousArtistes();

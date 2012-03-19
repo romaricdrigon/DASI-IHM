@@ -17,15 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 public class CreerGalerieAction extends Action {
 
     @Override
-    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        String bouton = req.getParameter("bouton");
-        
-        if ("creer".equals(bouton)) {
-            return "selectionnerDate.jsp";
-        } else {
-            return "index.jsp";
+    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // on vérifie si l'utilisateur est bien connecté
+        if (req.getSession() == null || req.getSession().getAttribute("connecte") == null) {
+            return "-1";
         }
+        // on a pour l'instant aucun traitement à faire
+        
+        return "selectionnerDate.jsp";
     }
 
 }

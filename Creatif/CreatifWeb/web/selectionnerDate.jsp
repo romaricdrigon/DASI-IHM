@@ -8,33 +8,29 @@
         <meta http-equiv="content-language" content="fr">
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="jquery-ui.css" />
-        <script type="text/javascript" src="jquery.min.js" />
-        <script type="text/javascript" src="jquery-ui.min.js" />
-    </head>
-    <body>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js"></script>
         <script>
-            // un peu de jQuery UI pour les choxi de la date
+            // un peu de jQuery UI pour le choix de la date
             $(function() {
 		$('#dateDebut').datepicker({
-                    dateFormat: 'dd/mm/yyyy',
+                    dateFormat: 'dd/mm/yy',
                     autoSize: true,
-                    closeText: 'Fermer',
-                    currentText: "Aujourd'hui",
                     minDate: new Date(),
                     altField: '#dateFin'
                 });
                 
-		$('#dateDebut').datepicker({
-                    dateFormat: 'dd/mm/yyyy',
+		$('#dateFin').datepicker({
+                    dateFormat: 'dd/mm/yy',
                     autoSize: true,
-                    closeText: 'Fermer',
-                    currentText: "Aujourd'hui",
                     minDate: new Date()
                 });
             });
 	</script>
+    </head>
+    <body>
         <div class="content">
-            <div class="accueil">Accueil</div>
+            <div class="accueil"><a href="accueil.jsp">Accueil</a></div>
             
             <h1>Sélection des dates de réservation</h1>
 
