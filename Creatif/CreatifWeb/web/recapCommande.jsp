@@ -22,11 +22,11 @@
 
         <ul>
          <%
-            List<Oeuvre> lesOeuvres = (List<Oeuvre>) request.getAttribute("recapCommande");
+            List<Oeuvre> lesOeuvres = (List<Oeuvre>) session.getAttribute("panier");
 
             for (Oeuvre uneOeuvre : lesOeuvres) {
          %>
-            <li><%= uneOeuvre.getNom() %> - <%= uneOeuvre.getArtiste().getPrenom() + uneOeuvre.getArtiste().getNom() %> - <%= uneOeuvre.getCarac() %> - <%= uneOeuvre.getPrix() %></li>
+                <li><%= uneOeuvre.getNom() %> - <%= uneOeuvre.getArtiste().getPrenom() + uneOeuvre.getArtiste().getNom() %> - <%= uneOeuvre.getCarac() %> - <%= uneOeuvre.getPrix() %></li>
          <%
             }
          %>

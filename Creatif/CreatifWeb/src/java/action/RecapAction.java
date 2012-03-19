@@ -22,6 +22,8 @@ public class RecapAction extends Action {
         // calcul du prix total : un servcie a été fait pour, on va l'utiliser
         double prixTotal = service.calculerPrixGalerie(panier);
         req.setAttribute("prixTotal", prixTotal);
+        
+        req.setAttribute("message", "La commande a bien été enregistrée !");
 
         return "recapCommande.jsp";
     }

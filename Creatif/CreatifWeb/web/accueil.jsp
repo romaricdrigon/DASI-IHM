@@ -19,6 +19,7 @@
 
         <a href="Controleur?action=creerGalerie">Créer une galerie</a>
         <a href="Controleur?action=afficher">Afficher le catalogue</a>
-
+        
+        <p>${message}</p>
     </body>
 </html>
