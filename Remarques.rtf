@@ -5,14 +5,19 @@
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \f0\fs24 \cf0 --- Mod\'e8le ---\
+Il n'y a pas de fonctions impl\'e9ment\'e9es permettant de r\'e9cup\'e9rer l'instance artiste associ\'e9 \'e0 un id fourni. Nous avons \'e9t\'e9 contraint \'e0 r\'e9cup\'e9rer l'ensemble des artistes puis d'isoler celui ayant l'identifiant recherch\'e9.\
 \
-Pas moyen de r\'e9cup\'e9rer les infos sur un artiste \'e0 partir de son ID (oblige \'e0 faire un int\'e9grateur tr\'e8s moche)\
-Pas possible de rechercher les oeuvres d'un artiste en particulier\
+Il n'y a aucun lien depuis l'artiste vers ses oeuvres, ainsi si on souhaite r\'e9cup\'e9rer juste les oeuvres d'un artiste, il faut r\'e9cup\'e9rer tous les oeuvres puis les filtrer manuellement sur l'identifiant.\
+\
+Les diff\'e9rents diagrammes de s\'e9quences ne donnent pas les noms des fonctions que l'on doit utiliser de la couche service.\
+\
+Plus de pr\'e9cisions sur les services, par exemple quand est-ce qu'ils l\'e8vent des exceptions\'85\
 \
 --- IHM ---\
 \
 Pas mal d'incoh\'e9rences dans la sp\'e9cif, diagrammes d'encha\'eenement des fen\'eatres incomplet\
 Boutons parfois mal nomm\'e9s. Inexistence de certaines zones de saisies : dimension & type d'oeuvre. fonctionnements contre les conventions : 'Supprimer' pour vider la liste\'85\
 \
-Gros probl\'e8me rencontr\'e9 : \
-Comprendre}
+Probl\'e8me rencontr\'e9 : \
+\
+}
