@@ -8,35 +8,36 @@
  *
  * Created on 28 févr. 2012, 17:00:47
  */
-
 package IHMClient;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import modele.Oeuvre;
 import service.Service;
-import vue.Main;
 
 /**
  *
  * @author Administrateur
  */
-public class AjoutPartie1JFrame extends JFrame {
+public class AjoutPartie1JFrame extends JFrame
+{
 
     protected Service service;
+
     /** Creates new form AjoutJFrame */
-    public AjoutPartie1JFrame() {
-        //utilisée pour debug
-        Main.Initialisation();
-
-
+    public AjoutPartie1JFrame()
+    {
         service = new Service();
         initComponents();
 
         //Préparation de la table
         List<Oeuvre> oeuvres = service.rechercherToutesOeuvres();
         tableauOeuvres.setModel(new ModelOeuvres(oeuvres));
+        computeBounds();
     }
 
     /** This method is called from within the constructor to
@@ -64,6 +65,7 @@ public class AjoutPartie1JFrame extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creat'IF");
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("art2.png"));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -97,10 +99,10 @@ public class AjoutPartie1JFrame extends JFrame {
         });
         jToolBar1.add(jButtonConsultation);
 
-        jLabelTitre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTitre.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabelTitre.setText("Ajouter une oeuvre");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel2.setText("Rechercher une oeuvre");
 
         jLabelRechercher.setText("Nom :");
@@ -230,21 +232,19 @@ public class AjoutPartie1JFrame extends JFrame {
 }//GEN-LAST:event_jButtonAccueilActionPerformed
 
     private void jButtonConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultationActionPerformed
-        new ConsulterJFrame().setVisible(true);
-        dispose();
+        JOptionPane.showMessageDialog(null, "Fonctionnalité non implémentée");
 }//GEN-LAST:event_jButtonConsultationActionPerformed
 
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     *
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AjoutPartie1JFrame().setVisible(true);
-            }
-        });
+    java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
+    new AjoutPartie1JFrame().setVisible(true);
     }
-
+    });
+    }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boutonRechercher;
     private javax.swing.JTextField champRechercher;
@@ -261,33 +261,39 @@ public class AjoutPartie1JFrame extends JFrame {
     private javax.swing.JTable tableauOeuvres;
     // End of variables declaration//GEN-END:variables
 
-    
     class ModelOeuvres extends AbstractTableModel
     {
+
         Object donnees[][];
-        String titres[] = {"Id", "Nom", "Artiste" };
+        String titres[] =
+        {
+            "Id", "Nom", "Artiste"
+        };
 
         public ModelOeuvres(List<Oeuvre> oeuvres)
         {
-           donnees = new Object[oeuvres.size()][titres.length];
-           for (int i = 0; i < oeuvres.size(); i++)
-           {
-               Oeuvre uneOeuvre = oeuvres.get(i);
-               donnees[i][0] = uneOeuvre.getOeuvreId();
-               donnees[i][1] = uneOeuvre.getNom();
-               donnees[i][2] = uneOeuvre.getArtiste().getNom();
-           }
+            donnees = new Object[oeuvres.size()][titres.length];
+            for (int i = 0; i < oeuvres.size(); i++)
+            {
+                Oeuvre uneOeuvre = oeuvres.get(i);
+                donnees[i][0] = uneOeuvre.getOeuvreId();
+                donnees[i][1] = uneOeuvre.getNom();
+                donnees[i][2] = uneOeuvre.getArtiste().getNom();
+            }
         }
 
-        public int getRowCount() {
+        public int getRowCount()
+        {
             return donnees.length;
         }
 
-        public int getColumnCount() {
+        public int getColumnCount()
+        {
             return titres.length;
         }
 
-        public Object getValueAt(int rowIndex, int columnIndex) {
+        public Object getValueAt(int rowIndex, int columnIndex)
+        {
             return donnees[rowIndex][columnIndex];
         }
 
@@ -302,6 +308,16 @@ public class AjoutPartie1JFrame extends JFrame {
         {
             return titres[col];
         }
+
+    }
+
+    private void computeBounds()
+    {
+        Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        Rectangle actualScreen = getBounds();
+        Rectangle bounds = new Rectangle((int) (screen.getWidth() - actualScreen.getWidth()) / 2, (int) (screen.getHeight() - actualScreen.getHeight()) / 2, (int) actualScreen.getWidth(), (int) actualScreen.getHeight());
+
+        setBounds(bounds);
     }
 
 }

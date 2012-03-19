@@ -11,12 +11,13 @@
 package IHMClient;
 
 import java.awt.Color;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modele.Artiste;
 import modele.Oeuvre;
 import service.Service;
-import vue.Main;
 
 /**
  *
@@ -26,11 +27,10 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
 
     /** Creates new form AjoutJFrame2 */
     public AjoutPartie2JFrame() {
-        //Debug
-        Main.Initialisation();
 
         initComponents();
         service = new Service();
+        computeBounds();
 
         //Préparation de la comboBox d'artistes
         lesArtistes = service.rechercherTousArtistes();
@@ -52,28 +52,28 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBar = new javax.swing.JToolBar();
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        labelCar = new javax.swing.JLabel();
-        labelPrix = new javax.swing.JLabel();
+        labelArtiste = new javax.swing.JLabel();
         jTextNom = new javax.swing.JTextField();
+        labelNom = new javax.swing.JLabel();
+        labelTitre = new javax.swing.JLabel();
+        labelPrix = new javax.swing.JLabel();
         jTextPrix = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaCar = new javax.swing.JTextArea();
+        jTextAreaCar1 = new javax.swing.JTextArea();
+        labelCar = new javax.swing.JLabel();
         jComboBoxArtiste = new javax.swing.JComboBox();
         jButtonAjouter = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creat'IF");
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("art2.png"));
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        jToolBar.setFloatable(false);
+        jToolBar.setRollover(true);
 
         jButton5.setText("Accueil");
         jButton5.setFocusable(false);
@@ -84,14 +84,14 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton5);
+        jToolBar.add(jButton5);
 
         jButton1.setText("Ajouter une oeuvre");
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        jToolBar.add(jButton1);
 
         jButton2.setText("Consulter le planning");
         jButton2.setFocusable(false);
@@ -102,24 +102,32 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar.add(jButton2);
 
-        jLabel2.setText("Nom :");
+        labelArtiste.setText("Artiste :");
 
-        jLabel3.setText("Artiste :");
+        jTextNom.setColumns(20);
+        jTextNom.setToolTipText("Le nom ne doit pas etre vide");
 
-        labelCar.setText("Caractéristiques :");
+        labelNom.setText("Nom :");
+
+        labelTitre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelTitre.setText("Ajouter une oeuvre");
 
         labelPrix.setText("Prix :");
 
-        jTextNom.setToolTipText("Le nom ne doit pas etre vide");
-
+        jTextPrix.setColumns(10);
         jTextPrix.setToolTipText("Le prix ne peut pas être vide. Le caractère . est utilisé");
 
-        jTextAreaCar.setColumns(20);
-        jTextAreaCar.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaCar);
+        jTextAreaCar1.setColumns(20);
+        jTextAreaCar1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextAreaCar1.setLineWrap(true);
+        jTextAreaCar1.setRows(3);
+        jScrollPane1.setViewportView(jTextAreaCar1);
 
+        labelCar.setText("Caractéristiques :");
+
+        jComboBoxArtiste.setMaximumRowCount(4);
         jComboBoxArtiste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxArtisteActionPerformed(evt);
@@ -133,80 +141,81 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Ajouter une oeuvre");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelCar)
-                            .addComponent(jLabel3)
-                            .addComponent(labelPrix)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextNom, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBoxArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextPrix, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonAjouter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(86, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBoxArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelCar)
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextPrix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPrix))
-                .addGap(43, 43, 43)
-                .addComponent(jButtonAjouter)
-                .addGap(41, 41, 41))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                .addGap(27, 27, 27))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(labelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelArtiste)
+                    .addComponent(labelNom)
+                    .addComponent(labelCar)
+                    .addComponent(labelPrix))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextNom, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPrix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButtonAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelNom)
+                    .addComponent(jTextNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelArtiste)
+                    .addComponent(jComboBoxArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(labelCar)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextPrix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPrix))
+                .addGap(51, 51, 51)
+                .addComponent(jButtonAjouter)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new AccueilJFrame().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, "Fonctionnalité non implémentée");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBoxArtisteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxArtisteActionPerformed
+    {//GEN-HEADEREND:event_jComboBoxArtisteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxArtisteActionPerformed
+
+    private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonAjouterActionPerformed
+    {//GEN-HEADEREND:event_jButtonAjouterActionPerformed
         boolean validite = true;
         String nom = jTextNom.getText();
         if(nom.isEmpty())
@@ -230,40 +239,26 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
 
         if(validite)
         {
-            String caract = jTextAreaCar.getText();
+            String caract = jTextAreaCar1.getText();
             //Récupération du bon artiste
             Artiste unArtiste = lesArtistes.get(jComboBoxArtiste.getSelectedIndex());
             Oeuvre uneOeuvre = new Oeuvre(nom, caract, prix);
 
             if (service.creerOeuvre(uneOeuvre, unArtiste) == 0) {
                 JOptionPane.showMessageDialog(null, "Ajout correctement effectué");
+                new AjoutPartie1JFrame().setVisible(true);
+                dispose();
             }
             else
             {
                 JOptionPane.showMessageDialog(null, "Ajout impossible");
             }
         }
-
-
     }//GEN-LAST:event_jButtonAjouterActionPerformed
-
-    private void jComboBoxArtisteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxArtisteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxArtisteActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new AccueilJFrame().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new ConsulterJFrame().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
-     */
+     *
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -271,7 +266,7 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
                 new AjoutPartie2JFrame().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -279,21 +274,28 @@ public class AjoutPartie2JFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonAjouter;
     private javax.swing.JComboBox jComboBoxArtiste;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaCar;
+    private javax.swing.JTextArea jTextAreaCar1;
     private javax.swing.JTextField jTextNom;
     private javax.swing.JTextField jTextPrix;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar;
+    private javax.swing.JLabel labelArtiste;
     private javax.swing.JLabel labelCar;
+    private javax.swing.JLabel labelNom;
     private javax.swing.JLabel labelPrix;
+    private javax.swing.JLabel labelTitre;
     // End of variables declaration//GEN-END:variables
     Service service;
     //Variable nécessaire pour afficher et traiter la liste déroulante d'artistes
     List<Artiste> lesArtistes;
 
-    //Variables nécessaire à l'instanciation d'une nouvelle oeuvre
+    //Dimensionnement de la fenetre
+    private void computeBounds()
+    {
+        Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        Rectangle actualScreen = getBounds();
+        Rectangle bounds = new Rectangle((int)(screen.getWidth() - actualScreen.getWidth()) / 2,(int) (screen.getHeight() - actualScreen.getHeight()) /2, (int) actualScreen.getWidth(), (int) actualScreen.getWidth());
+       
+        setBounds(bounds);
+    }
 }
