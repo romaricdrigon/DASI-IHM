@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 6 mars 2012, 16:36:21
-    Author     : Administrateur
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="modele.Oeuvre"%>
@@ -11,43 +5,74 @@
 <%@page import="modele.Sculpture"%>
 
 <!doctype html>
-
 <html lang="fr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Catalogue - Créat'If</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="content-language" content="fr">
+        <link rel="stylesheet" type="text/css" href="style.css" /> 
     </head>
     <body>
-        <a href="index.jsp">Accueil</a>
-        
-        <h1>Catalogue</h1>
+        <div class="content">
+            <div class="accueil">Accueil</div>
+            
+            <h1>Détail du catalogue</h1>
 
-        Peintures :
-        <ul>
-         <%
-            List<Peinture> lesPeintures = (List<Peinture>) request.getAttribute("lesPeintures");
+            <h3>Peintures</h3>
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>Oeuvre</th>
+                        <th>Artiste</th>
+                        <th>Caractéristiques</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <%
+                    List<Peinture> lesPeintures = (List<Peinture>) request.getAttribute("lesPeintures");
 
-            for (Peinture unePeinture : lesPeintures) {
-         %>
-            <li><%= unePeinture.getNom() %> - <%= unePeinture.getArtiste().getPrenom() + unePeinture.getArtiste().getNom() %> - <%= unePeinture.getCarac() %> - <%= unePeinture.getPrix() %></li>
-         <%
-            }
-         %>
-        </ul>
-        
-        Sculptures :
-        <ul>
-         <%
-            List<Sculpture> lesSculptures = (List<Sculpture>) request.getAttribute("lesSculptures");
+                    for (Peinture unePeinture : lesPeintures) {
+                 %>
+                    <tr>
+                        <td><%= unePeinture.getNom() %></td>
+                        <td><%= unePeinture.getArtiste().getPrenom() + unePeinture.getArtiste().getNom() %></td>
+                        <td><%= unePeinture.getCarac() %></td>
+                        <td><%= unePeinture.getPrix() %> €</td>
+                    </tr>
+                 <%
+                    }
+                 %>
+                </tbody>
+            </table>
 
-            for (Sculpture uneSculpture : lesSculptures) {
-         %>
-            <li><%= uneSculpture.getNom() %> - <%= uneSculpture.getArtiste().getPrenom() + uneSculpture.getArtiste().getNom() %> - <%= uneSculpture.getCarac() %> - <%= uneSculpture.getPrix() %></li>
-         <%
-            }
-         %>
-        </ul>       
+            <h3>Sculptures</h3>
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>Oeuvre</th>
+                        <th>Artiste</th>
+                        <th>Caractéristiques</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <%
+                    List<Sculpture> lesSculptures = (List<Sculpture>) request.getAttribute("lesSculptures");
 
-
+                    for (Sculpture uneSculpture : lesSculptures) {
+                 %>
+                   <tr>
+                        <td><%= uneSculpture.getNom() %></td>
+                        <td><%= uneSculpture.getArtiste().getPrenom() + uneSculpture.getArtiste().getNom() %></td>
+                        <td><%= uneSculpture.getCarac() %></td>
+                        <td><%= uneSculpture.getPrix() %> €</td>
+                   </tr>             
+                 <%
+                    }
+                 %>
+                </tbody>
+            </table>       
+        </div>
     </body>
 </html>

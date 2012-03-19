@@ -16,7 +16,7 @@ public class RecapAction extends Action {
     
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
-        // on garde la variable de session "panier", qu idevient un récap de commande
+        // on garde la variable de session "panier", qui devient un récap de commande
         List<Oeuvre> panier = (List) req.getSession().getAttribute("panier");
         
         // calcul du prix total : un servcie a été fait pour, on va l'utiliser
