@@ -20,7 +20,7 @@ public class RechercherOeuvreAction extends Action {
         
         // on recherche les oeuvres correspondantes
         List<Oeuvre> lesOeuvres = service.rechercherOeuvreParNomDate(nomOeuvre, (Date)req.getSession().getAttribute("dateDebutCorrecte"), (Date)req.getSession().getAttribute("dateFinCorrecte"));
-        req.setAttribute("lesOeuvres", lesOeuvres);   
+        req.getSession().setAttribute("lesOeuvres", lesOeuvres);   
 
         return "creerGalerie.jsp";
     }

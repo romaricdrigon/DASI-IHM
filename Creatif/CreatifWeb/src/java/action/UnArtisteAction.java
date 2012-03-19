@@ -31,7 +31,7 @@ public class UnArtisteAction extends Action {
         // on fait donc cette petite boucle
         for (Artiste unArtiste : tousArtistes) {
             if (unArtiste.getIdArtiste() == idArtiste) {
-                req.setAttribute("lArtiste", unArtiste);
+                req.getSession().setAttribute("lArtiste", unArtiste);
                 break;
             }
         }
@@ -56,7 +56,7 @@ public class UnArtisteAction extends Action {
         // Récupération des oeuvres de l'artiste
         // HACKY : il n'y a pas de service correspondant, du coup on prend les prix > 0 (soit tous)
         List<Oeuvre> lesOeuvres = service.rechercherOeuvreParPrixArtisteDate(idArtiste, prix, operateurComp, (Date)req.getSession().getAttribute("dateDebutCorrecte"), (Date)req.getSession().getAttribute("dateFinCorrecte"));
-        req.setAttribute("lesOeuvres", lesOeuvres);
+        req.getSession().setAttribute("lesOeuvres", lesOeuvres);
 
         return "creerGalerie.jsp";
     }

@@ -3,8 +3,8 @@ package Controleur;
 import action.Action;
 import action.AfficherCatalogueAction;
 import action.AjouterPanierAction;
-import action.ChoixAction;
 import action.CommanderAction;
+import action.CreerGalerieAction;
 import action.DateAction;
 import action.LoginAction;
 import action.RecapAction;
@@ -60,8 +60,8 @@ public class Controleur extends HttpServlet {
 
         if ("login".equals(name)) {
             action = new LoginAction();
-        } else if ("choix".equals(name)) {
-            action = new ChoixAction();
+        } else if ("creerGalerie".equals(name)) {
+            action = new CreerGalerieAction();
         } else if ("dateSaisie".equals(name)) {
             action = new DateAction();
         } else if ("preparerArtiste".equals(name)) {

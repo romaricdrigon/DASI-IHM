@@ -46,11 +46,11 @@ public class DateAction extends Action {
 
                 // et on prépare une liste de toutes les oeuvres (disponibles sur ces dates)
                 List<Oeuvre> lesOeuvres = service.rechercherOeuvreParDate((Date)req.getSession().getAttribute("dateDebutCorrecte"), (Date)req.getSession().getAttribute("dateFinCorrecte"));
-                req.setAttribute("lesOeuvres", lesOeuvres);
+                req.getSession().setAttribute("lesOeuvres", lesOeuvres);
                 
                 // on préparer un panier vide pour cette session
                 List<String> panier = new ArrayList<String>();
-                req.getSession().setAttribute("panier", panier);
+                session.setAttribute("panier", panier);
 
                 return "creerGalerie.jsp";
             } else {

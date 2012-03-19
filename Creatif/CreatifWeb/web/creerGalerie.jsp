@@ -41,7 +41,7 @@
                     <%
                         }
                     %>
-                </select>
+                </select><br />
                 <select name="comparaisonPrix">
                     <option value="-1"></option>
                     <option value="inf"><</option>
@@ -66,8 +66,8 @@
          <div>
              <!-- on a pas de photo pour notre artiste ! -->
              <%
-                if (request.getAttribute("lArtiste") != null) {
-                    Artiste unArtiste = (Artiste) request.getAttribute("lArtiste");
+                if (session.getAttribute("lArtiste") != null) {
+                    Artiste unArtiste = (Artiste) session.getAttribute("lArtiste");
              %>
              <div>
                  <%= unArtiste.getNom() %>
@@ -87,7 +87,7 @@
              <form action="Controleur" method="get">
                  <select name="oeuvresASupprimer" multiple>
                  <%
-                    List<Oeuvre> lePanier = (List<Oeuvre>) request.getSession().getAttribute("panier");
+                    List<Oeuvre> lePanier = (List<Oeuvre>) session.getAttribute("panier");
 
                     for (Oeuvre uneOeuvre : lePanier) {
                  %>
@@ -107,8 +107,8 @@
              <form action="Controleur" method="get">
                  <select name="oeuvresAAjouter" multiple>
                  <%
-                     if (request.getAttribute("lesOeuvres") != null) {
-                        List<Oeuvre> lesOeuvres = (List<Oeuvre>) request.getAttribute("lesOeuvres");
+                     if (session.getAttribute("lesOeuvres") != null) {
+                        List<Oeuvre> lesOeuvres = (List<Oeuvre>) session.getAttribute("lesOeuvres");
 
                         for (Oeuvre uneOeuvre : lesOeuvres) {
                  %>
