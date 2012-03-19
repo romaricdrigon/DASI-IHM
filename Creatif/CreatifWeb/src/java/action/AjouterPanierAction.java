@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ public class AjouterPanierAction extends Action {
         String[] idsDesOeuvres = req.getParameterValues("oeuvresAAjouter");
         
         // on récupère les objets Oeuvre
-        List<Oeuvre> lesOeuvres = null;
+        List<Oeuvre> lesOeuvres = new ArrayList<Oeuvre>();
         for (String idOeuvre : idsDesOeuvres) {
             try {
                 int iOeuvre = Integer.parseInt(idOeuvre);

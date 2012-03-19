@@ -42,6 +42,13 @@
                         }
                     %>
                 </select>
+                <select name="comparaisonPrix">
+                    <option value="-1"></option>
+                    <option value="inf"><</option>
+                    <option value="eg">=</option>
+                    <option value="sup">></option>
+                </select>
+                <input type="text" value="" name="prixOeuvre" />
                 <input type="hidden" value="preparerArtiste" name="action" />
                 <input type="submit" value="Rechercher" />
             </form>
@@ -51,13 +58,6 @@
             Nom de l'oeuvre :
             <form action="Controleur" method="get">
                 <input type="text" value="" name="nomOeuvre" />
-                <!--<select name="comparaison">
-                    <option value="-1"></option>
-                    <option value="inf"><</option>
-                    <option value="eg">=</option>
-                    <option value="sup">></option>
-                </select>
-                <input type="text" value="" name="prixOeuvre" />-->
                 <input type="hidden" value="rechercherOeuvre" name="action" />
                 <input type="submit" value="Rechercher" />
             </form>
@@ -118,9 +118,9 @@
                     }
                  %>
                  </select>
+                <input type="hidden" value="ajouterPanier" name="action" />
+                <input type="submit" value="Ajouter" />
              </form>
-             <input type="hidden" value="ajouterPanier" name="action" />
-             <input type="submit" value="Ajouter" />
          </div>
                  
          <p>${erreurPanier}</p>

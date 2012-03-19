@@ -49,7 +49,7 @@ public class DateAction extends Action {
                 req.setAttribute("lesOeuvres", lesOeuvres);
                 
                 // on préparer un panier vide pour cette session
-                List<String> panier = new ArrayList(10);
+                List<String> panier = new ArrayList<String>();
                 req.getSession().setAttribute("panier", panier);
 
                 return "creerGalerie.jsp";

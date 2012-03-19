@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modele.Client"%>
+
 <!doctype html>
 
 <html lang="fr">
@@ -13,7 +15,7 @@
         <title>Accueil - Créat'If</title>
     </head>
     <body>
-        <h1>Bonjour, Michel</h1>
+        <h1>Bonjour, <%= ((Client)request.getSession().getAttribute("leClient")).getPrenom() %></h1>
 
         <a href="Controleur?action=choix&bouton=creer">Créer une galerie</a>
         <a href="Controleur?action=afficher">Afficher le catalogue</a>
