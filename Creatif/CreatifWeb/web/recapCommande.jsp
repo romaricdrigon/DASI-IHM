@@ -16,6 +16,8 @@
         <title>Récapitulatif de la commande - Créat'If</title>
     </head>
     <body>
+        <a href="index.jsp">Accueil</a>
+        
         <h1>Récapitulatif</h1>
 
         <ul>

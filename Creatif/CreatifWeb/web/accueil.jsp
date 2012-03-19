@@ -16,7 +16,7 @@
         <h1>Bonjour, Michel</h1>
 
         <a href="Controleur?action=choix&bouton=creer">Créer une galerie</a>
-        <a href="Controleur?action=choix&bouton=afficher">Afficher le catalogue</a>
+        <a href="Controleur?action=afficher">Afficher le catalogue</a>
 
     </body>
 </html>

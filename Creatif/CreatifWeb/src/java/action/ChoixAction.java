@@ -23,9 +23,6 @@ public class ChoixAction extends Action {
         
         if ("creer".equals(bouton)) {
             return "selectionnerDate.jsp";
-        } else if ("afficher".equals(bouton)) {
-            // la vue est-elle à faire ?
-            return "index.jsp";
         } else {
             return "index.jsp";
         }

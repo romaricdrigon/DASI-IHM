@@ -1,6 +1,7 @@
 package Controleur;
 
 import action.Action;
+import action.AfficherCatalogueAction;
 import action.AjouterPanierAction;
 import action.ChoixAction;
 import action.CommanderAction;
@@ -75,6 +76,8 @@ public class Controleur extends HttpServlet {
             action = new RecapAction();
         } else if ("validerCommande".equals(name)) {
             action = new CommanderAction();
+        } else if ("afficher".equals(name)) {
+            action = new AfficherCatalogueAction();
         }
 
         return action;
