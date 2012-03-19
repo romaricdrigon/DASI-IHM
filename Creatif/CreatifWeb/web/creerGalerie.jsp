@@ -112,7 +112,7 @@
 
                         for (Oeuvre uneOeuvre : lesOeuvres) {
                  %>
-                    <option value="<%= uneOeuvre.getOeuvreId() %>"><%= uneOeuvre.getNom() %></option>
+                    <option value="<%= uneOeuvre.getOeuvreId() %>"><%= uneOeuvre.getNom() %> - <%= uneOeuvre.getPrix() %></option>
                  <%
                         }
                     }
@@ -124,5 +124,9 @@
          </div>
                  
          <p>${erreurPanier}</p>
+         
+         <div>
+             <a href="Controleur?action=commander">Valider la commande</a>
+         </div>
     </body>
 </html>

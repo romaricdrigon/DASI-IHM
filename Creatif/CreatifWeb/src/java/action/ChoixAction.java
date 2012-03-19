@@ -20,16 +20,13 @@ public class ChoixAction extends Action {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         String bouton = req.getParameter("bouton");
-        if ("creer".equals(bouton))
-        {
+        
+        if ("creer".equals(bouton)) {
             return "selectionnerDate.jsp";
-        } else if ("afficher".equals(bouton))
-        {
-            //TODO!
+        } else if ("afficher".equals(bouton)) {
+            // la vue est-elle à faire ?
             return "index.jsp";
-        }
-        else
-        {
+        } else {
             return "index.jsp";
         }
     }

@@ -2,6 +2,7 @@ package action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.Client;
 
 /**
  *
@@ -23,10 +24,13 @@ public class LoginAction extends Action {
         try {
             int code = Integer.parseInt(codeClient);
 
-            service.connexionClient(code);
+            Client leClient = service.connexionClient(code);
 
             // on stock ok dans une variable de session
             req.getSession(true).setAttribute("connecte", true);
+            
+            // et les détails du client de même
+            req.getSession().setAttribute("leClient", leClient);
 
             return "accueil.jsp";
         } catch (NumberFormatException e) {
